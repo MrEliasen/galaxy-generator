@@ -5,92 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Galaxy Generator - Generate galaxies with stellar neighbourhoods, stars and planets</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/hybrid.min.css" integrity="sha512-ZVy0y7AnokL/xGtaRaWRgLYjhywJZdJwVFWXW9oihOpDIochH8JF0xWFK+Y1WJ5wTn3rn9LPZRFjxObuzvQUaQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" type="text/css" href="https://oogabooga.dev/style.css">
         <style>
-            /*
-              1. Use a more-intuitive box-sizing model.
-            */
-            *, *::before, *::after {
-              box-sizing: border-box;
-            }
-
-            /*
-              2. Remove default margin
-            */
-            * {
-              margin: 0;
-            }
-
-            /*
-              Typographic tweaks!
-              3. Add accessible line-height
-              4. Improve text rendering
-            */
-            body {
-              line-height: 1.5;
-              -webkit-font-smoothing: antialiased;
-            }
-
-            /*
-              5. Improve media defaults
-            */
-            img, picture, video, canvas, svg {
-              display: block;
-              max-width: 100%;
-            }
-
-            /*
-              6. Remove built-in form typography styles
-            */
-            input, button, textarea, select {
-              font: inherit;
-            }
-
-            /*
-              7. Avoid text overflows
-            */
-            p, h1, h2, h3, h4, h5, h6 {
-              overflow-wrap: break-word;
-            }
-
-            /*
-              8. Create a root stacking context
-            */
-            #root, #__next {
-              isolation: isolate;
-            }
-        </style>
-        <style>
-            html, body {
-                height: 100%;
-                width: 100%;
-            }
-
-            body {
-                padding: 0;
-                color: rgb(232, 230, 227);
-                background-color: #181A1B;
-                padding: 1em 1.3em;
-            }
-
-            h2 {
-                margin-top:1em;
-            }
-
-            p  {
-                margin-bottom: 1em;
-            }
-
             #endpoints {
                 display: flex;
                 flex-direction: column;
 
                 .section {
                     display: flex;
+
+                    .docs {
+                        width: 35%;
+                    }
+                    .example {
+                        width: 65%;
+                    }
                 }
             }
         </style>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/hybrid.min.css" integrity="sha512-ZVy0y7AnokL/xGtaRaWRgLYjhywJZdJwVFWXW9oihOpDIochH8JF0xWFK+Y1WJ5wTn3rn9LPZRFjxObuzvQUaQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <h1>Galaxy Generator</h1>
@@ -106,11 +41,11 @@
 
         <div id="endpoints">
             <div class="section">
-                <div>
+                <div class="docs">
                     <h3>Generate Galaxy</h3>
                     <p>Will generate a galaxy with a single stellar neighbourhood. If you want to add more, you can generate them using the Stellar Neighbourhood endpoint below.</p>
                 </div>
-                <div>
+                <div class="example">
                     <h3>Request (Random Seed)</h3>
 <pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy'</code></pre>
                     <h3>Request (Specific Seed)</h3>
@@ -168,11 +103,11 @@
                 </div>
             </div>
             <div class="section">
-                <div>
+                <div class="docs">
                     <h3>Generate Stellar Neighbourhood</h3>
                     <p>Will generate a stellar neighbourhood for the specified galaxy seed. The stellar neighbourhood seed is derived from the galaxy seed so it is only unique to the galaxy.</p>
                 </div>
-                <div>
+                <div class="example">
                     <h3>Request (Random Seed)</h3>
 <pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy/1725986991/neighbourhood'</code></pre>
                     <h3>Request (Specific Seed)</h3>
