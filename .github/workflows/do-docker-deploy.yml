@@ -27,7 +27,7 @@ jobs:
 
       - name: Tag image
         run: |
-          docker tag world-builder:${{ github.event.inputs.version }} ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version }}
+          docker tag ${{ vars.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version }} ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version }}
 
       - name: Push image to DO Container Registry
         run: |

@@ -25,7 +25,7 @@ jobs:
 
       - name: Tag image
         run: |
-          docker tag world-builder:latest ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+          docker tag ${{ vars.DOCKER_IMAGE_NAME }}:latest ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
 
       - name: Push image to DO Container Registry
         run: |
