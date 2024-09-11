@@ -1,0 +1,33 @@
+name: Automatic build and publish docker image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Build image
+        run: make docker-build VERSION=latest
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_REGISTRY_RW }}
+
+      - name: Log in to DO Container Registry
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Tag image
+        run: |
+          docker tag world-builder:latest ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+
+      - name: Push image to DO Container Registry
+        run: |
+          docker push ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+
