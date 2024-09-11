@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Builder - Generate galaxies with stellar neighbourhoods, stars and planets</title>
+    <style>
+        /*
+          1. Use a more-intuitive box-sizing model.
+        */
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+
+        /*
+          2. Remove default margin
+        */
+        * {
+          margin: 0;
+        }
+
+        /*
+          Typographic tweaks!
+          3. Add accessible line-height
+          4. Improve text rendering
+        */
+        body {
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        /*
+          5. Improve media defaults
+        */
+        img, picture, video, canvas, svg {
+          display: block;
+          max-width: 100%;
+        }
+
+        /*
+          6. Remove built-in form typography styles
+        */
+        input, button, textarea, select {
+          font: inherit;
+        }
+
+        /*
+          7. Avoid text overflows
+        */
+        p, h1, h2, h3, h4, h5, h6 {
+          overflow-wrap: break-word;
+        }
+
+        /*
+          8. Create a root stacking context
+        */
+        #root, #__next {
+          isolation: isolate;
+        }
+    </style>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            padding: 0;
+            color: rgb(232, 230, 227);
+            background-color: #181A1B;
+            padding: 1em 1.3em;
+        }
+
+        h2 {
+            margin-top:1em;
+        }
+
+        p  {
+            margin-bottom: 1em;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/hybrid.min.css" integrity="sha512-ZVy0y7AnokL/xGtaRaWRgLYjhywJZdJwVFWXW9oihOpDIochH8JF0xWFK+Y1WJ5wTn3rn9LPZRFjxObuzvQUaQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+      <h1>World Builder</h1>
+      <p>Generate galaxies with stellar neighbourhoods, stars and planets.<br>It will only generate the data, you will have to visualise it.</p>
+      <pre>{{ .table }}</pre>
+
+      <h2>Exmaple</h2>
+      <p>The following, very reduced, example shows what each field is and the structure of the output.</p>
+<pre><code>{
+    "type": "Spiral",           // only supported type
+    "thickness": 1880,          // the thickness of the galaxy, excluding the bulge, in Light Years
+    "radii": 42156,             // The size of the galaxy in Light Years
+    "seed": 1725986991,         // The seed used to generate the galaxy
+    "stellar_neighbourhoods": [ // The Stellar Neighbourhoods (Stellar Neighbourhood) which have been generated.
+        {
+            "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
+            "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
+            "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
+            "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
+            "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
+                "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
+                "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)
+                "z": 1756.8772504255369     // Vertical position in the disk (in AU)
+            },
+            "star_systems": [               // the Star Systems within the stellar neighbourhood
+                {
+                    "star": {                           // The Star System's star (only supports single-star systems)
+                        "designation": "27094.1.M",     // Generated name of the star
+                        "neighbourhood_coordinates": {  // Where in the Stellar Neighbourhood this Star System is located
+                            "x": 0.2118276012638134,    // Top-down view X coordinate (in AU)
+                            "y": -7.547446746003631,    // Top-down view Y coordinate (in AU)
+                            "z": 7.151239407910701      // Vertical position in the disk (in AU)
+                        },
+                        "class": "M",                   // The stars class
+                        "luminosity_class": "V"         // The stars luminosity class,
+                        "colour": "#F77200",            // The colour of the star (very basic, not accurate)
+                        "sequence": "Red Dwarf",        // The stars sequence
+                        "solar_radii": 0.476,           // The size of the star is Solar Radii
+                        "solar_masses": 0.2927,         // The stars mass, in solar masses
+                        "temperature_k": 3373           // The stars temperature in Kelvin
+                    },
+                    "planets": [                        // The planets orbiting this star
+                        {
+                            "planet_type": "ice-giant", // The type of planet "ice-giant", "gas-giant" or "rocky-planet" 
+                            "habitable": false,         // If the planet is within the habitable zone
+                            "earth_radii": 3.904,       // Size of the planet, in earth radii
+                            "density": 1.3506,          // The density of the planet in g/cm^3
+                            "orbit_au": 1.244           // The average distance to the star in AU
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" integrity="sha512-6yoqbrcLAHDWAdQmiRlHG4+m0g/CT/V9AGyxabG8j7Jk8j3r3K6due7oqpiRMZqcYe9WM2gPcaNNxnl2ux+3tA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/json.min.js" integrity="sha512-hWf27MxSv3ZoSOnIh0STq7QrN5YWaGxD53WCPl8GS7WboKLvz+x/FK6431QNwZ6vz6tigXSw1D1z9gz1WwoObg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script>
+          hljs.highlightAll();
+      </script>
+  </body>
+</html>

@@ -1,7 +1,5 @@
-tmp
 .env
-server-cert.crt
-server-cert.key
 .DS_Store
 scatter3d.html
 notes.txt
+src/release
