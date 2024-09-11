@@ -16,8 +16,8 @@ func EndpointDocs(c *gin.Context) {
 		"Method", "Endpoints", "Response Type", "Args", "Notes",
 	}
 	data := [][]string{
-		{"GET", "/api/galaxy", "JSON", "(optional) ?seed=<number> (galaxy seed)", "Generates a galaxy with a single stellar neighbourhood"},
-		{"GET", "/api/galaxy/:seed/neighbourhood", "JSON", "?seed=<number> (neighbourhood seed)", "Generates another stellar neighbourhood for the specified galaxy"},
+		{"GET", "/api/galaxy", "JSON", "?seed=<number> (optional, galaxy seed)", "Generates a galaxy with a single stellar neighbourhood"},
+		{"GET", "/api/galaxy/<galaxy seed>/neighbourhood", "JSON", "?seed=<number> (optional, neighbourhood seed)", "Generates another stellar neighbourhood for the specified galaxy"},
 	}
 
 	table := utils.ToTable(headers, data)
