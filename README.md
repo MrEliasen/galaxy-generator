@@ -1,4 +1,4 @@
-# World Builder
+# Galaxy Generator
 
 I have no idea what I am doing.
 
