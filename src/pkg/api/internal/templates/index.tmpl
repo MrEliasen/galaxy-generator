@@ -9,154 +9,153 @@
 
         <link rel="stylesheet" type="text/css" href="https://oogabooga.dev/style.css">
         <style>
+            body {
+                padding: 0;
+            }
+
             #endpoints {
                 display: flex;
                 flex-direction: column;
+            }
 
-                .section {
-                    display: flex;
-
-                    .docs {
-                        width: 35%;
-                    }
-                    .example {
-                        width: 65%;
-                    }
+            h3 {
+                small {
+                    font-size: 65%;
+                    font-weight: normal;
+                    display: block;
                 }
+            }
+
+            .request{
+                width: 80%;
+                padding: 0px 15px;
+                font-size: 16px;
+                background-color: #25282a;
+                margin-bottom: 45px;
             }
         </style>
 
     </head>
     <body>
-        <h1>Galaxy Generator</h1>
-        <p>Generate galaxies with stellar neighbourhoods, stars and planets.<br>It will only generate the data, you will have to visualise it.<br>
-        The goal is to be scientifically believable, while trying to remain as scientifically accurate as possible, without needing to do a lot of (any) simulation.</p>
-        <h2>Outstanding</h2>
-        <ul>
-            <li>Moons</li>
-            <li>Asteroid Belts</li>
-            <li>Habitable planet's - landmass & biomes</li>
-        </ul>
-        <h2>API</h2>
-
-        <div id="endpoints">
-            <div class="section">
-                <div class="docs">
-                    <h3>Generate Galaxy</h3>
-                    <p>Will generate a galaxy with a single stellar neighbourhood. If you want to add more, you can generate them using the Stellar Neighbourhood endpoint below.</p>
-                </div>
-                <div class="example">
-                    <h3>Request (Random Seed)</h3>
-<pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy'</code></pre>
-                    <h3>Request (Specific Seed)</h3>
-<pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy?seed=1725986991'</code></pre>
-
-                    <h3>Response</h3>
-                    <p>The following, very reduced, example shows what each field is and the structure of the output.</p>
-<pre><code class="language-json">{
-    "type": "Spiral",           // only supported type
-    "thickness": 1880,          // the thickness of the galaxy, excluding the bulge, in Light Years
-    "radii": 42156,             // The size of the galaxy in Light Years
-    "seed": 1725986991,         // The seed used to generate the galaxy
-    "stellar_neighbourhoods": [ // The Stellar Neighbourhoods (Stellar Neighbourhood) which have been generated.
-        {
-            "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
-            "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
-            "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
-            "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
-            "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
-                "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
-                "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)
-                "z": 1756.8772504255369     // Vertical position in the disk (in AU)
-            },
-            "star_systems": [               // the Star Systems within the stellar neighbourhood
-                {
-                    "star": {                           // The Star System's star (only supports single-star systems)
-                        "designation": "27094.1.M",     // Generated name of the star
-                        "neighbourhood_coordinates": {  // Where in the Stellar Neighbourhood this Star System is located
-                            "x": 0.2118276012638134,    // Top-down view X coordinate (in AU)
-                            "y": -7.547446746003631,    // Top-down view Y coordinate (in AU)
-                            "z": 7.151239407910701      // Vertical position in the disk (in AU)
-                        },
-                        "class": "M",                   // The stars class
-                        "luminosity_class": "V"         // The stars luminosity class,
-                        "colour": "#F77200",            // The colour of the star (very basic, not accurate)
-                        "sequence": "Red Dwarf",        // The stars sequence
-                        "solar_radii": 0.476,           // The size of the star is Solar Radii
-                        "solar_masses": 0.2927,         // The stars mass, in solar masses
-                        "temperature_k": 3373           // The stars temperature in Kelvin
-                    },
-                    "planets": [                        // The planets orbiting this star
-                        {
-                            "planet_type": "ice-giant", // The type of planet "ice-giant", "gas-giant" or "rocky-planet" 
-                            "habitable": false,         // If the planet is within the habitable zone
-                            "earth_radii": 3.904,       // Size of the planet, in earth radii
-                            "density": 1.3506,          // The density of the planet in g/cm^3
-                            "orbit_au": 1.244           // The average distance to the star in AU
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}</code></pre>
-                </div>
-            </div>
-            <div class="section">
-                <div class="docs">
-                    <h3>Generate Stellar Neighbourhood</h3>
-                    <p>Will generate a stellar neighbourhood for the specified galaxy seed. The stellar neighbourhood seed is derived from the galaxy seed so it is only unique to the galaxy.</p>
-                </div>
-                <div class="example">
-                    <h3>Request (Random Seed)</h3>
-<pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy/1725986991/neighbourhood'</code></pre>
-                    <h3>Request (Specific Seed)</h3>
-<pre><code class="language-bash">curl --location 'https://world-builder.sirmre.com/api/galaxy/1725986991/neighbourhood?seed=84172859571'</code></pre>
-
-                    <h3>Response</h3>
-                    <p>The following, very reduced, example shows what each field is and the structure of the output.</p>
-<pre><code class="language-json">{
-    "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
-    "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
-    "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
-    "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
-    "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
-        "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
-        "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)
-        "z": 1756.8772504255369     // Vertical position in the disk (in AU)
-    },
-    "star_systems": [               // the Star Systems within the stellar neighbourhood
-        {
-            "star": {                           // The Star System's star (only supports single-star systems)
-                "designation": "27094.1.M",     // Generated name of the star
-                "neighbourhood_coordinates": {  // Where in the Stellar Neighbourhood this Star System is located
-                    "x": 0.2118276012638134,    // Top-down view X coordinate (in AU)
-                    "y": -7.547446746003631,    // Top-down view Y coordinate (in AU)
-                    "z": 7.151239407910701      // Vertical position in the disk (in AU)
+        <div class="main">
+            <h1>Galaxy Generator</h1>
+            <p>Generate galaxies with stellar neighbourhoods, stars and planets.<br>It will only generate the data, you will have to visualise it.<br>
+            The goal is to be scientifically believable, while trying to remain as scientifically accurate as possible, without needing to do a lot of (any) simulation.</p>
+            <h2>Outstanding</h2>
+            <ul>
+                <li>Moons</li>
+                <li>Asteroid Belts</li>
+                <li>Habitable planet's - landmass & biomes</li>
+            </ul>
+            <h2>API</h2>
+        </div>
+        <div class="request">
+            <h3>
+                Generate Galaxy
+                <small>Will generate a galaxy with a single stellar neighbourhood. If you want to add more, you can generate them using the Stellar Neighbourhood endpoint below.</small>
+            </h3>
+    <pre><code class="language-bash">curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy'
+# or with a specific seed:
+curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy?seed=1725986991'</code></pre>
+            <h3>Response</h3>
+            <p>The following, very reduced, example shows what each field is and the structure of the output.</p>
+    <pre><code class="language-json">{
+        "type": "Spiral",           // only supported type
+        "thickness": 1880,          // the thickness of the galaxy, excluding the bulge, in Light Years
+        "radii": 42156,             // The size of the galaxy in Light Years
+        "seed": 1725986991,         // The seed used to generate the galaxy
+        "stellar_neighbourhoods": [ // The Stellar Neighbourhoods (Stellar Neighbourhood) which have been generated.
+            {
+                "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
+                "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
+                "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
+                "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
+                "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
+                    "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
+                    "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)
+                    "z": 1756.8772504255369     // Vertical position in the disk (in AU)
                 },
-                "class": "M",                   // The stars class
-                "luminosity_class": "V"         // The stars luminosity class,
-                "colour": "#F77200",            // The colour of the star (very basic, not accurate)
-                "sequence": "Red Dwarf",        // The stars sequence
-                "solar_radii": 0.476,           // The size of the star is Solar Radii
-                "solar_masses": 0.2927,         // The stars mass, in solar masses
-                "temperature_k": 3373           // The stars temperature in Kelvin
-            },
-            "planets": [                        // The planets orbiting this star
-                {
-                    "planet_type": "ice-giant", // The type of planet "ice-giant", "gas-giant" or "rocky-planet" 
-                    "habitable": false,         // If the planet is within the habitable zone
-                    "earth_radii": 3.904,       // Size of the planet, in earth radii
-                    "density": 1.3506,          // The density of the planet in g/cm^3
-                    "orbit_au": 1.244           // The average distance to the star in AU
-                }
-            ]
-        }
-    ]
-}</code></pre>
-                </div>
-            </div>
-        <div>
+                "star_systems": [               // the Star Systems within the stellar neighbourhood
+                    {
+                        "star": {                           // The Star System's star (only supports single-star systems)
+                            "designation": "27094.1.M",     // Generated name of the star
+                            "neighbourhood_coordinates": {  // Where in the Stellar Neighbourhood this Star System is located
+                                "x": 0.2118276012638134,    // Top-down view X coordinate (in AU)
+                                "y": -7.547446746003631,    // Top-down view Y coordinate (in AU)
+                                "z": 7.151239407910701      // Vertical position in the disk (in AU)
+                            },
+                            "class": "M",                   // The stars class
+                            "luminosity_class": "V"         // The stars luminosity class,
+                            "colour": "#F77200",            // The colour of the star (very basic, not accurate)
+                            "sequence": "Red Dwarf",        // The stars sequence
+                            "solar_radii": 0.476,           // The size of the star is Solar Radii
+                            "solar_masses": 0.2927,         // The stars mass, in solar masses
+                            "temperature_k": 3373           // The stars temperature in Kelvin
+                        },
+                        "planets": [                        // The planets orbiting this star
+                            {
+                                "planet_type": "ice-giant", // The type of planet "ice-giant", "gas-giant" or "rocky-planet" 
+                                "habitable": false,         // If the planet is within the habitable zone
+                                "earth_radii": 3.904,       // Size of the planet, in earth radii
+                                "density": 1.3506,          // The density of the planet in g/cm^3
+                                "orbit_au": 1.244           // The average distance to the star in AU
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }</code></pre>
+        </div>
+
+        <div class="request">
+            <h3>Generate Stellar Neighbourhood</h3>
+            <p>Will generate a stellar neighbourhood for the specified galaxy seed. The stellar neighbourhood seed is derived from the galaxy seed so it is only unique to the galaxy.</p>
+<pre><code class="language-bash">curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy/1725986991/neighbourhood'
+# or with a specific seed for the stellar neighbourhood
+curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy/1725986991/neighbourhood?seed=84172859571'</code></pre>
+            <h3>Response</h3>
+            <p>The following, very reduced, example shows what each field is and the structure of the output.</p>
+    <pre><code class="language-json">{
+        "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
+        "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
+        "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
+        "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
+        "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
+            "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
+            "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)
+            "z": 1756.8772504255369     // Vertical position in the disk (in AU)
+        },
+        "star_systems": [               // the Star Systems within the stellar neighbourhood
+            {
+                "star": {                           // The Star System's star (only supports single-star systems)
+                    "designation": "27094.1.M",     // Generated name of the star
+                    "neighbourhood_coordinates": {  // Where in the Stellar Neighbourhood this Star System is located
+                        "x": 0.2118276012638134,    // Top-down view X coordinate (in AU)
+                        "y": -7.547446746003631,    // Top-down view Y coordinate (in AU)
+                        "z": 7.151239407910701      // Vertical position in the disk (in AU)
+                    },
+                    "class": "M",                   // The stars class
+                    "luminosity_class": "V"         // The stars luminosity class,
+                    "colour": "#F77200",            // The colour of the star (very basic, not accurate)
+                    "sequence": "Red Dwarf",        // The stars sequence
+                    "solar_radii": 0.476,           // The size of the star is Solar Radii
+                    "solar_masses": 0.2927,         // The stars mass, in solar masses
+                    "temperature_k": 3373           // The stars temperature in Kelvin
+                },
+                "planets": [                        // The planets orbiting this star
+                    {
+                        "planet_type": "ice-giant", // The type of planet "ice-giant", "gas-giant" or "rocky-planet" 
+                        "habitable": false,         // If the planet is within the habitable zone
+                        "earth_radii": 3.904,       // Size of the planet, in earth radii
+                        "density": 1.3506,          // The density of the planet in g/cm^3
+                        "orbit_au": 1.244           // The average distance to the star in AU
+                    }
+                ]
+            }
+        ]
+    }</code></pre>
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" integrity="sha512-6yoqbrcLAHDWAdQmiRlHG4+m0g/CT/V9AGyxabG8j7Jk8j3r3K6due7oqpiRMZqcYe9WM2gPcaNNxnl2ux+3tA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/json.min.js" integrity="sha512-hWf27MxSv3ZoSOnIh0STq7QrN5YWaGxD53WCPl8GS7WboKLvz+x/FK6431QNwZ6vz6tigXSw1D1z9gz1WwoObg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

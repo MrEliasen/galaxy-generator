@@ -10,7 +10,6 @@ RUN CGO_ENABLED=0 GOOS=linux GIN_MODE=release go build -o ./release/ ./cmd/api/m
 
 # Deploy application binary into a lean image
 FROM alpine:3.20.3
-#FROM gcr.io/distroless/base-debian11 
 
 WORKDIR /
 

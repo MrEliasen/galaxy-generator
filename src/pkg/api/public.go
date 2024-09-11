@@ -4,6 +4,7 @@ import (
 	"embed"
 	"html/template"
 	"net/http"
+	"os"
 
 	g "github.com/CAFxX/httpcompression/contrib/gin-gonic/gin"
 	"github.com/gin-gonic/gin"
@@ -22,8 +23,12 @@ func Run() {
 	r := gin.Default()
 	r.Use(compressor)
 
-	tmpl := template.Must(template.New("").ParseFS(templateFS, "internal/templates/*"))
-	r.SetHTMLTemplate(tmpl)
+	if os.Getenv("GIN_MODE") == "release" {
+		tmpl := template.Must(template.New("").ParseFS(templateFS, "internal/templates/*"))
+		r.SetHTMLTemplate(tmpl)
+	} else {
+		r.LoadHTMLGlob("pkg/api/internal/templates/*")
+	}
 
 	r.GET("/favicon.ico", func(c *gin.Context) {
 		c.Data(http.StatusOK, "image/x-icon", favicon)

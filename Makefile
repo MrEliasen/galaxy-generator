@@ -18,7 +18,7 @@ help:
 	@echo "--------------------------------------------------------------------"
 
 docker-build:
-	docker build -t world-builder:${VERSION} -f Dockerfile .
+	docker build -t galaxy-generator:${VERSION} -f Dockerfile .
 
 build-generator:
 	cd src && go build -o ./release/ ./cmd/generator/main.go
