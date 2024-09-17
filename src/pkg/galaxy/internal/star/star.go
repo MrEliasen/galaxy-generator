@@ -1,11 +1,13 @@
 package star
 
 import (
+	"encoding/json"
 	"math"
 	"math/rand"
 
 	ic "github.com/mreliasen/ihniwiad/pkg/coordinate/public/interfaces"
 	"github.com/mreliasen/ihniwiad/pkg/galaxy/public/consts"
+	"github.com/mreliasen/ihniwiad/pkg/utils"
 )
 
 type Star struct {
@@ -19,6 +21,23 @@ type Star struct {
 	SolarRadii      float64                `json:"solar_radii"`
 	SolarMasses     float64                `json:"solar_masses"`
 	TemperatureK    float64                `json:"temperature_k"`
+}
+
+func (s Star) MarshalJSON() ([]byte, error) {
+	// Create a type alias to avoid infinite recursion
+	type Alias Star
+
+	hzI, hzO := s.HabitableZone()
+
+	return json.Marshal(&struct {
+		Alias
+		FrostLine     float64   `json:"frost_line"`
+		HabitableZone []float64 `json:"habitable_zone"`
+	}{
+		Alias:         (Alias)(s),
+		FrostLine:     utils.RoundFloat(s.FrostLine(), 2),
+		HabitableZone: []float64{utils.RoundFloat(hzI, 2), utils.RoundFloat(hzO, 2)},
+	})
 }
 
 /*
