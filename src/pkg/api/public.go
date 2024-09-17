@@ -35,6 +35,7 @@ func Run() {
 	})
 
 	r.GET("/api/galaxy", internal.EndpointGalaxy)
+	r.GET("/api/galaxy/:seed", internal.EndpointGalaxy)
 	r.GET("/api/galaxy/:seed/neighbourhood", internal.EndpointNeighbourhood)
 	r.GET("/", internal.EndpointDocs)
 

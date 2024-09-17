@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,11 @@ func EndpointGalaxy(c *gin.Context) {
 
 	if c.ShouldBind(&args) != nil {
 		args.Seed = time.Now().UnixMicro()
+	}
+
+	gSeed, err := strconv.ParseInt(c.Param("seed"), 10, 64)
+	if err == nil {
+		args.Seed = gSeed
 	}
 
 	if args.Seed == 0 {
