@@ -18,8 +18,12 @@ func New(rng *rand.Rand, seed int64) interfaces.GalaxyInterface {
 	g := internal.Galaxy{
 		Type: "Spiral",
 	}
-	g.SetRadius(utils.RoundFloat(rng.Float64()*(radiiMax-radiiMin)+radiiMin, 0))
+
+	radii := rng.Float64()*(radiiMax-radiiMin) + radiiMin
+
+	g.SetRadius(utils.RoundFloat(radii, 0))
 	g.SetThickness(utils.RoundFloat(rng.Float64()*(thicknessMax-thicknessMin)+thicknessMin, 0))
+	g.SetBulgeRadius(utils.RoundFloat(radii*(rng.Float64()*(0.15-0.08)+0.08), 0))
 	g.SetRNG(rng)
 	g.SetSeed(seed)
 	return &g

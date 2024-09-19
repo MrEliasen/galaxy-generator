@@ -17,6 +17,7 @@ type Galaxy struct {
 	Type           string                                     `json:"type"`
 	Thickness      float64                                    `json:"thickness"`
 	Radius         float64                                    `json:"radii"`
+	BulgeRadius    float64                                    `json:"bulge_radii"`
 	Seed           int64                                      `json:"seed"`
 	Neighbourhoods []interfaces.StellarNeighbourhoodInterface `json:"stellar_neighbourhoods"`
 }
@@ -34,6 +35,16 @@ Sets the seeded RNG
 */
 func (g *Galaxy) SetRNG(rng *rand.Rand) interfaces.GalaxyInterface {
 	g.Rng = rng
+	return g
+}
+
+/*
+Sets size of the galaxy bulge, by its radius.
+
+The radius is in LY
+*/
+func (g *Galaxy) SetBulgeRadius(r float64) interfaces.GalaxyInterface {
+	g.BulgeRadius = r
 	return g
 }
 
@@ -63,8 +74,8 @@ This is a contested subject, let it serve as no more than a guide.
 Returns the habitable zone by its inner and outer distance to the galactic centre.
 */
 func (g *Galaxy) HabitableZone() (inner float64, outer float64) {
-	inner = utils.RoundFloat(g.Radius*0.47, 0) // ly
-	outer = utils.RoundFloat(g.Radius*0.6, 0)  // ly
+	inner = utils.RoundFloat(g.Radius*0.18, 0) // ly
+	outer = utils.RoundFloat(g.Radius*0.66, 0) // ly
 	return inner, outer
 }
 
@@ -80,7 +91,7 @@ func (g *Galaxy) GenerateStellarNeighbourhood(seed int64) interfaces.StellarNeig
 	rad := utils.RoundFloat(float64(nhRng.Intn(30-15)+15), 0)                 // 15 LY min, up to 30 LY
 	sDensity := utils.RoundFloat(nhRng.Float64()*((0.006-0.003)/10)+0.003, 5) // 0.003 min density, up to 0.006
 
-	location := utils.RandomCartesianCoord(nhRng, dist)
+	location := utils.RandomCartesianCoord(nhRng, dist, g.BulgeRadius+60, hzOuter)
 	location.SetZ(nhRng.Float64()*(g.Thickness-rad) + rad)
 
 	neighbourhood := &StellarNeighbourhood{

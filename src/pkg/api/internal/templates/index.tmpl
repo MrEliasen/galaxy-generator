@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Galaxy Generator - Generate galaxies with stellar neighbourhoods, stars and planets</title>
+        <meta name="description" content="Generate galaxies with stellar neighbourhoods, stars and planets. The goal is to be scientifically believable, while trying to remain as scientifically accurate as possible, without needing to do a lot of (any) simulation.">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/hybrid.min.css" integrity="sha512-ZVy0y7AnokL/xGtaRaWRgLYjhywJZdJwVFWXW9oihOpDIochH8JF0xWFK+Y1WJ5wTn3rn9LPZRFjxObuzvQUaQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -63,6 +64,7 @@ curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy?seed=17259869
         "type": "Spiral",           // only supported type
         "thickness": 1880,          // the thickness of the galaxy, excluding the bulge, in Light Years
         "radii": 42156,             // The size of the galaxy in Light Years
+        "bulge_radii": 5058,        // The size of the galaxy bulge in Light Years
         "seed": 1725986991,         // The seed used to generate the galaxy
         "stellar_neighbourhoods": [ // The Stellar Neighbourhoods (Stellar Neighbourhood) which have been generated.
             {

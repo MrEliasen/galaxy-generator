@@ -7,6 +7,7 @@ import (
 	"os"
 
 	g "github.com/CAFxX/httpcompression/contrib/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/mreliasen/ihniwiad/pkg/api/internal"
 )
@@ -22,6 +23,14 @@ func Run() {
 
 	r := gin.Default()
 	r.Use(compressor)
+
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: false,
+	}))
 
 	if os.Getenv("GIN_MODE") == "release" {
 		tmpl := template.Must(template.New("").ParseFS(templateFS, "internal/templates/*"))

@@ -14,10 +14,17 @@ func RoundFloat(val float64, precision uint) float64 {
 	return math.Round(val*ratio) / ratio
 }
 
-func RandomCartesianCoord(rng *rand.Rand, dist float64) interfaces.CoordinateInterface {
+func RandomCartesianCoord(rng *rand.Rand, dist float64, minDist, maxDist float64) interfaces.CoordinateInterface {
+	// Generate a random angle between 0 and 2π
 	theta := rng.Float64() * 2 * math.Pi
-	x := dist * math.Cos(theta)
-	y := dist * math.Sin(theta)
+
+	// Generate a random radius with uniform distribution within the annulus
+	u := rng.Float64()
+	r := math.Sqrt(u*(maxDist*maxDist-minDist*minDist) + minDist*minDist)
+
+	// Convert polar coordinates to Cartesian coordinates
+	x := r * math.Cos(theta)
+	y := r * math.Sin(theta)
 
 	return coordinate.New(x, y)
 }
