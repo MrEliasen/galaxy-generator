@@ -16,8 +16,8 @@ type Galaxy struct {
 	Rng            *rand.Rand                                 `json:"-"`
 	Type           string                                     `json:"type"`
 	Thickness      float64                                    `json:"thickness"`
-	Radius         float64                                    `json:"radii"`
-	BulgeRadius    float64                                    `json:"bulge_radii"`
+	Radius         float64                                    `json:"radius"`
+	BulgeRadius    float64                                    `json:"bulge_radius"`
 	Seed           int64                                      `json:"seed"`
 	Neighbourhoods []interfaces.StellarNeighbourhoodInterface `json:"stellar_neighbourhoods"`
 }

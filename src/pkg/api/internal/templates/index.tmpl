@@ -63,15 +63,15 @@ curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy?seed=17259869
     <pre><code class="language-json">{
         "type": "Spiral",           // only supported type
         "thickness": 1880,          // the thickness of the galaxy, excluding the bulge, in Light Years
-        "radii": 42156,             // The size of the galaxy in Light Years
-        "bulge_radii": 5058,        // The size of the galaxy bulge in Light Years
+        "radius": 42156,            // The size of the galaxy in Light Years
+        "bulge_radius ": 5058,      // The size of the galaxy bulge in Light Years
         "seed": 1725986991,         // The seed used to generate the galaxy
         "stellar_neighbourhoods": [ // The Stellar Neighbourhoods (Stellar Neighbourhood) which have been generated.
             {
                 "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
                 "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre, in LY
                 "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
-                "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood, in LY
+                "neighbourhood_radius": 19,     // The size of the Stellar Neighbourhood, in LY
                 "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
                     "x": 17205.166551010938,    // Top-down view X coordinate (in LY)
                     "y": 9889.202248573682,     // Top-down view Y coordinate (in LY)
@@ -124,7 +124,7 @@ curl --location 'https://galaxy-generator.oogabooga.dev/api/galaxy/1725986991/ne
         "seed": 84172859571,            // The seed used to generate the neighbourhood, derived from the galaxy seed 
         "distance": 19844.74936,        // How far the Stellar Neighbourhood is from the galactic centre
         "stellar_density": 0.00308,     // How dense this Stellar Neighbourhood's space is with stars
-        "neighbourhood_radii": 19,      // The size of the Stellar Neighbourhood
+        "neighbourhood_radius": 19,      // The size of the Stellar Neighbourhood
         "galactic_coordinate": {        // Where in the galaxy this Stellar Neighbourhood is located
             "x": 17205.166551010938,    // Top-down view X coordinate (in AU)
             "y": 9889.202248573682,     // Top-down view Y coordinate (in AU)

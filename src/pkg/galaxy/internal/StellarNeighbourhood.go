@@ -16,7 +16,7 @@ type StellarNeighbourhood struct {
 	Seed    int64                            `json:"seed"`
 	Dist    float64                          `json:"distance"`
 	Density float64                          `json:"stellar_density"`
-	Radius  float64                          `json:"neighbourhood_radii"`
+	Radius  float64                          `json:"neighbourhood_radius"`
 	Coords  ic.CoordinateInterface           `json:"galactic_coordinate"`
 	Systems []interfaces.StarSystemInterface `json:"star_systems"`
 }
