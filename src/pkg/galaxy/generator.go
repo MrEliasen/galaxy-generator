@@ -10,7 +10,7 @@ import (
 
 func New(rng *rand.Rand, seed int64) interfaces.GalaxyInterface {
 	radiiMin := 35_000.0
-	radiiMax := 150_000.0
+	radiiMax := 125_000.0
 
 	thicknessMin := 800.0
 	thicknessMax := 2200.0

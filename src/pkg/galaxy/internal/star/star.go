@@ -48,6 +48,20 @@ func (star *Star) GetCoordinate() ic.CoordinateInterface {
 }
 
 /*
+Calculate the absolute magnitude of a star
+*/
+func (star *Star) AbsoluteMagnitude() float64 {
+	// Calculate ratios
+	T_ratio := star.TemperatureK / consts.SOL_TEMP_K
+
+	// Calculate absolute magnitude
+	luminosityRatio := math.Pow(star.SolarRadii, 2) * math.Pow(T_ratio, 4)
+	M := consts.SOLAR_ABSOLUTE_MAGNITUDE - 2.5*math.Log10(luminosityRatio)
+
+	return M
+}
+
+/*
 Returns the colour of the star
 */
 func (star *Star) GetColour() string {

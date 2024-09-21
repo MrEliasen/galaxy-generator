@@ -14,7 +14,6 @@ import (
 type StellarNeighbourhood struct {
 	Rng     *rand.Rand                       `json:"-"`
 	Seed    int64                            `json:"seed"`
-	Dist    float64                          `json:"distance"`
 	Density float64                          `json:"stellar_density"`
 	Radius  float64                          `json:"neighbourhood_radius"`
 	Coords  ic.CoordinateInterface           `json:"galactic_coordinate"`
@@ -74,17 +73,17 @@ func (sn *StellarNeighbourhood) randomStarClassification() star.StarClassType {
 	num := sn.Rng.Float64() * 100
 
 	switch true {
-	case num <= 3.0e-005:
+	case num <= 0.00003:
 		return star.OClass
 	case num <= 0.13:
 		return star.BClass
-	case num <= 0.6:
+	case num <= 0.6+0.13:
 		return star.AClass
-	case num <= 3.0:
+	case num <= 3.0+0.6+0.13:
 		return star.FClass
-	case num <= 7.6:
+	case num <= 7.6+3.0+0.6+0.13:
 		return star.GClass
-	case num <= 12.1:
+	case num <= 12.1+7.6+3.0+0.6+0.13:
 		return star.KClass
 	default:
 		return star.MClass

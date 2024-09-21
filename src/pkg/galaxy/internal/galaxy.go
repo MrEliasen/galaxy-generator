@@ -87,17 +87,13 @@ func (g *Galaxy) GenerateStellarNeighbourhood(seed int64) interfaces.StellarNeig
 
 	nhRng := utils.NewSeededRNG(g.Seed ^ seed)
 
-	dist := utils.RoundFloat(nhRng.Float64()*((hzOuter-hzInner)/100)+hzInner, 5)
 	rad := utils.RoundFloat(float64(nhRng.Intn(30-15)+15), 0)                 // 15 LY min, up to 30 LY
 	sDensity := utils.RoundFloat(nhRng.Float64()*((0.006-0.003)/10)+0.003, 5) // 0.003 min density, up to 0.006
-
-	location := utils.RandomCartesianCoord(nhRng, dist, g.BulgeRadius+60, hzOuter)
-	location.SetZ(nhRng.Float64()*(g.Thickness-rad) + rad)
+	location := utils.RandomPointInCylindricalAnnulus(nhRng, hzInner, hzOuter, ((g.Thickness/2)+rad)*-1, ((g.Thickness / 2) + rad))
 
 	neighbourhood := &StellarNeighbourhood{
 		Rng:     nhRng,
 		Seed:    seed,
-		Dist:    dist,
 		Radius:  rad,
 		Density: sDensity,
 		Coords:  location,

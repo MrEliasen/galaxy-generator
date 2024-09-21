@@ -28,4 +28,5 @@ const (
 	OUTER_EDGE_STELLAR_FLUX   = 0.53                     // for a sun-like star
 	INFRRED_FACTOR            = 0.2                      // Infrared adjustment factor for low-luminosity stars
 	UV_FACTOR                 = 0.15                     // UV Penalty scaling factor for high-luminosity stars
+	SOLAR_ABSOLUTE_MAGNITUDE  = 4.83                     // Absolute magnitude of the Sun
 )
