@@ -73,7 +73,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     1700,
 			MassMin:       8,
 			MassMax:       25,
-			Percent:       0.15,
+			Percent:       0.1,
 		},
 		{
 			Name:          "V",
@@ -85,7 +85,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     6,
 			MassMin:       2.1,
 			MassMax:       16,
-			Percent:       0.85,
+			Percent:       0.9,
 		},
 	},
 	"A": {
@@ -99,7 +99,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     10,
 			MassMin:       2,
 			MassMax:       10,
-			Percent:       0.02,
+			Percent:       0.04,
 		},
 		{
 			Name:          "IV",
@@ -111,7 +111,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     3,
 			MassMin:       1.5,
 			MassMax:       2.4,
-			Percent:       0.08,
+			Percent:       0.16,
 		},
 		{
 			Name:          "V",
@@ -123,7 +123,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     2.5,
 			MassMin:       1.4,
 			MassMax:       2.4,
-			Percent:       0.9,
+			Percent:       0.8,
 		},
 	},
 	"F": {
@@ -213,7 +213,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     1700,
 			MassMin:       3.0,
 			MassMax:       8.0,
-			Percent:       0.01,
+			Percent:       0.0001,
 		},
 		{
 			Name:          "IV",
@@ -225,7 +225,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     1.4,
 			MassMin:       0.7,
 			MassMax:       1.2,
-			Percent:       0.09,
+			Percent:       0.0099,
 		},
 		{
 			Name:          "III",
@@ -237,7 +237,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     30,
 			MassMin:       0.7,
 			MassMax:       2.5,
-			Percent:       0.1,
+			Percent:       0.04,
 		},
 		{
 			Name:          "V",
@@ -249,7 +249,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     0.8,
 			MassMin:       0.45,
 			MassMax:       0.8,
-			Percent:       0.8,
+			Percent:       0.95,
 		},
 	},
 	"M": {
@@ -263,7 +263,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     1700,
 			MassMin:       0.5,
 			MassMax:       2.0,
-			Percent:       0.001,
+			Percent:       0.0000002,
 		},
 		{
 			Name:          "III",
@@ -275,7 +275,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     30,
 			MassMin:       0.3,
 			MassMax:       0.8,
-			Percent:       0.0099,
+			Percent:       0.0012,
 		},
 		{
 			Name:          "VI",
@@ -287,7 +287,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     0.01,
 			MassMin:       0.001,
 			MassMax:       0.08,
-			Percent:       0.01,
+			Percent:       0.0088,
 		},
 		{
 			Name:          "V",
@@ -299,7 +299,7 @@ var SpectralClasses = map[string][]SpectralConfig{
 			RadiusMax:     0.7,
 			MassMin:       0.08,
 			MassMax:       0.6,
-			Percent:       0.98,
+			Percent:       0.99,
 		},
 	},
 	"Brown Dwarf (L)": {

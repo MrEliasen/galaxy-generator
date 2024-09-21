@@ -73,7 +73,7 @@ func (sn *StellarNeighbourhood) randomStarClassification() star.StarClassType {
 	num := sn.Rng.Float64() * 100
 
 	switch true {
-	case num <= 0.00003:
+	case num <= 0.000003:
 		return star.OClass
 	case num <= 0.13:
 		return star.BClass
