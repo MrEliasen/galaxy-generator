@@ -8,17 +8,19 @@ import (
 )
 
 /*
-Distribution before snow line
------------------------------------------------
+	Distribution before snow line
+	-----------------------------------------------
 	- 0.075 - 0.5 earth radii planets (15 % chance)
 	- 0.5 - 1.5   earth radii planets (35% chance)
 	- 1.5 - 2.5   earth radii planets (50 % chance)
+
+	 rough guesstimates, extrapolated from our own solar system
 */
 
 const (
 	rocky_dwarf_min    float64 = 0.075 // earth radii
 	rocky_dwarf_max    float64 = 0.49  // earth radii
-	rocky_dwarf_chance float64 = 0.15  // 15%
+	rocky_dwarf_chance float64 = 0.15  // % distribution of rocky planets within the frost line
 )
 
 const (

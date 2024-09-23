@@ -1,6 +1,8 @@
 package star
 
-import "math/rand"
+import (
+	"math/rand"
+)
 
 func calculateSpectralClass(rng *rand.Rand, star_type string) *SpectralConfig {
 	classes := SpectralClasses[star_type]
@@ -32,7 +34,8 @@ type SpectralConfig struct {
 	MassMax       float64 // in solar masses
 	TempRangeMin  float64 // in K
 	TempRangeMax  float64 // in K
-	Percent       float64
+	Percent       float64 // the % distribution of that spectral class for the specific stellar classification
+	// This % is highly speculative, it is a best guess estimate from observational data and guess work
 }
 
 var SpectralClasses = map[string][]SpectralConfig{

@@ -1,5 +1,6 @@
 package consts
 
+// These are not all used any more for the generation of the galaxy, but would still be useful
 const (
 	AU                        = 149.6e6                  // in km
 	EARTH_RADII               = 6.371e6                  // in m
@@ -17,8 +18,8 @@ const (
 	SOLAR_WIND_VELOCITY       = 4.0e5                    // m/s
 	SOLAR_ESCAPE_VELOCITY     = 617.54                   // km/s
 	SOLAR_LUMINOSITY          = 3.828e26                 // solar lumens
-	SOL_TEMP_K                = 5778.0                   // in kelvin
-	GRAVITATIONAL_CONST       = 6.674e-11                // :)
+	SOL_TEMPERATURE_K         = 5778.0                   // in kelvin
+	GRAVITATIONAL_CONST       = 6.674e-11                // It is what it says on the tin.
 	ISM_DENSITY               = 1.67e-21                 // kg/m^3
 	ISM_VELOCITY              = 2.5e4                    // m/s
 	STEFAN_BOLTZMANN_CONST    = 5.670374419e-8           // W/(m^2 K^4)

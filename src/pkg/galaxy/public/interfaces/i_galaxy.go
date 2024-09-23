@@ -34,5 +34,5 @@ type GalaxyInterface interface {
 	/*
 		Dumps information about the galaxy, stellar neighbourhoods and systems to console
 	*/
-	Display()
+	DumpStarSystems()
 }

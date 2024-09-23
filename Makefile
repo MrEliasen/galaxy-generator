@@ -6,31 +6,23 @@ help:
 	@echo "--------------------------------------------------------------------"
 	@echo "| Command        | Description                                     |"
 	@echo "--------------------------------------------------------------------"
-	@echo "| docker-build   | builds the project docker image		          |"
+	@echo "| docker-build   | builds the project docker release image		  |"
 	@echo "--------------------------------------------------------------------"
-	@echo "| build          | builds the project and outputs to /release      |"
+	@echo "| build          | builds the project and outputs to ./release     |"
 	@echo "--------------------------------------------------------------------"
-	@echo "| galaxy         | Generates a new galaxy        		          |" 
+	@echo "| galaxy         | Runs the galaxy generator code                  |" 
 	@echo "--------------------------------------------------------------------"
-	@echo "| server         | runs the project web server                     |" 
-	@echo "--------------------------------------------------------------------"
-	@echo "| test           | runs the project test files                     |" 
+	@echo "| api            | runs the project web server                     |" 
 	@echo "--------------------------------------------------------------------"
 
 docker-build:
 	docker build -t galaxy-generator:${VERSION} -f Dockerfile .
 
-build-generator:
-	cd src && go build -o ./release/ ./cmd/generator/main.go
-
-build-api:
-	cd src && GIN_MODE=release go build -o ./release/ ./cmd/api/main.go
+build:
+	cd src && go build -o ./release/ ./cmd/api/main.go
 
 galaxy:
 	cd src && go run ./cmd/generator/main.go
 
-server:
+api :
 	cd src && go run ./cmd/api/main.go
-
-test:
-	cd src && go test ./...

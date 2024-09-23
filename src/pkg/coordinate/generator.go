@@ -5,7 +5,7 @@ import (
 	"github.com/mreliasen/ihniwiad/pkg/coordinate/public/interfaces"
 )
 
-func New(x, y float64) interfaces.CoordinateInterface {
+func New2D(x, y float64) interfaces.CoordinateInterface {
 	return internal.New(x, y, 0)
 }
 

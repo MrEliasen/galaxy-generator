@@ -35,7 +35,7 @@ var outerResonances = []Resonance{
 	{5, 2},
 }
 
-// Titius-Bode distribuion
+// Based on the Titius-Bode law, adapted with star-specific data
 func getTitiusBodeDistribution(rng *rand.Rand, star interfaces.StarInterface) []float64 {
 	starAdjustment := star.FrostLine() / 2.7
 	semiMajorAxis := 0.4 * starAdjustment
@@ -68,7 +68,7 @@ func getResonanceFactor(resonance Resonance) float64 {
 	return resonanceFactor
 }
 
-// Function to generate planets with resonances
+// Function to generate planets with an orbit based on resonances + Titius-Bode law
 func generatePlanetDistances(rng *rand.Rand, system interfaces.StarSystemInterface) (inner []float64, outer []float64) {
 	logger := logger.Get()
 

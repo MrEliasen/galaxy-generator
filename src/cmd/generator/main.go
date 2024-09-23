@@ -17,5 +17,5 @@ func main() {
 	logger.Debugf("Galaxy Habitable Zone: %.0f - %.0f", i, o)
 
 	g.GenerateStellarNeighbourhood(rng.Int63())
-	// g.Display()
+	g.DumpStarSystems()
 }

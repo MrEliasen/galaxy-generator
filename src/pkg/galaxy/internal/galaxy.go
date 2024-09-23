@@ -105,16 +105,7 @@ func (g *Galaxy) GenerateStellarNeighbourhood(seed int64) interfaces.StellarNeig
 	return neighbourhood
 }
 
-func (g *Galaxy) Display() {
-	g.dumpStarSystems()
-	g.plotStarSystems()
-}
-
-func (g *Galaxy) plotStarSystems() {
-	PlotExample(g.Neighbourhoods[0])
-}
-
-func (g *Galaxy) dumpStarSystems() {
+func (g *Galaxy) DumpStarSystems() {
 	re := lipgloss.NewRenderer(os.Stdout)
 	baseStyle := re.NewStyle().Padding(0, 1)
 	headerStyle := baseStyle.Foreground(lipgloss.Color("252")).Bold(true)

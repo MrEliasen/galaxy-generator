@@ -7,12 +7,7 @@ import (
 	"github.com/mreliasen/ihniwiad/pkg/galaxy/public/interfaces"
 )
 
-/*
-Distribution after snow line
------------------------------------------------
-	- 4.0 - 14.0 earth radii gas giants (70%)
-*/
-
+// rough guesstimates, extrapolated from our own solar system
 const (
 	gas_size_min float64 = 5.0  // earth radii
 	gas_size_max float64 = 14.0 // earth radii

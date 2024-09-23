@@ -7,12 +7,7 @@ import (
 	"github.com/mreliasen/ihniwiad/pkg/galaxy/public/interfaces"
 )
 
-/*
-Distribution after snow line
------------------------------------------------
-	- 2.5 - 4.0  earth radii ice giants (30%)
-*/
-
+// rough guesstimates, extrapolated from our own solar system
 const (
 	ice_size_min float64 = 2.5 // earth radii
 	ice_size_max float64 = 4.0 // earth radii

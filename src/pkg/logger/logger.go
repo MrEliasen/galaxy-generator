@@ -25,7 +25,7 @@ func New(level log.Level) *log.Logger {
 	logger = log.NewWithOptions(os.Stderr, log.Options{
 		Level:           level,
 		ReportCaller:    true,
-		ReportTimestamp: true,
+		ReportTimestamp: level != log.DebugLevel,
 		TimeFormat:      time.Kitchen,
 		Prefix:          "Galaxy ",
 	})

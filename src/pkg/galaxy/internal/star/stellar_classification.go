@@ -57,6 +57,8 @@ func (sc *StarClassType) GenerateStar(rng *rand.Rand) (*Star, error) {
 	return star, nil
 }
 
+// The planet # is based on observational data and a whole bunch of theory.
+// Is it anything but scientifically accurate
 var (
 	OClass = StarClassType{
 		Name:         "O",
