@@ -9,14 +9,14 @@ func calculateSpectralClass(rng *rand.Rand, star_type string) *SpectralConfig {
 	chance := rng.Float64()
 	var class SpectralConfig
 
-	total := chance
+	total := 0.0
 	for i := 0; i < len(classes); i++ {
-		if total <= classes[i].Percent {
+		total += classes[i].Percent
+
+		if chance <= total {
 			class = classes[i]
 			break
 		}
-
-		total += classes[i].Percent
 	}
 
 	return &class
