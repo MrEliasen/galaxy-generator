@@ -15,19 +15,14 @@ jobs:
       - name: Build image
         run: make docker-build VERSION=latest
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DO_REGISTRY_RW }}
-
-      - name: Log in to DO Container Registry
-        run: doctl registry login --expiry-seconds 600
+      - name: Log in to Docker registry
+        run: |
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
 
       - name: Tag image
         run: |
-          docker tag ${{ vars.DOCKER_IMAGE_NAME }}:latest ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+          docker tag ${{ vars.DOCKER_IMAGE_NAME }}:latest ${{ secrets.DOCKER_REGISTRY_URL }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
 
-      - name: Push image to DO Container Registry
+      - name: Push image to Docker registry
         run: |
-          docker push ${{ vars.DOCKER_REGISTRY_FQDN }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
-
+          docker push ${{ secrets.DOCKER_REGISTRY_URL }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
