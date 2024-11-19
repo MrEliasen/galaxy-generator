@@ -17,7 +17,7 @@ jobs:
 
       - name: Log in to Docker registry
         run: |
-          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login ${{ vars.DOCKER_REGISTRY_URL }} -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
+          echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login ${{ vars.DOCKER_REGISTRY_URL }} -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin
 
       - name: Tag image
         run: |
