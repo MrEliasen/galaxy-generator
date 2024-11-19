@@ -14,7 +14,6 @@ jobs:
 
       - name: Build image
         run: make docker-build VERSION=latest
-
         
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3

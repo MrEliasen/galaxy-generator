@@ -18,10 +18,16 @@ help:
 	@echo "| api            | runs the project web server                     |" 
 	@echo "--------------------------------------------------------------------"
 
-docker-build:
+docker-login:
 	docker login registry.ooga-booga.dev
+
+docker-build:
 	docker build -t galaxy-generator:${VERSION} -f Dockerfile .
+
+docker-tag:
 	docker tag galaxy-generator:${VERSION} ${REGISTRY}/galaxy-generator:${VERSION}
+
+docker-push:
 	docker push ${REGISTRY}/galaxy-generator:${VERSION}
 
 build:
