@@ -15,9 +15,13 @@ jobs:
       - name: Build image
         run: make docker-build VERSION=latest
 
-      - name: Log in to Docker registry
-        run: |
-          echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login ${{ vars.DOCKER_REGISTRY_URL }} -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin
+        
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.DOCKER_REGISTRY_URL }}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
       - name: Tag image
         run: |
